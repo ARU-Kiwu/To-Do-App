@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    background: var(--background);
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root[class='dark'] {
+   --background: #2b2a2d;
+   --background-accent: #39383b;
+   --text-color: #f7f8f8;
+   --primary:#7df3f3;
+   --border-color:#edf0f050;
+}
+
+/* Tooltip*/
+
+.tooltip {
+    --tooltip-bg:var(--primary);
+    color: #2b2a2d;
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 5px 10px;
+    text-align: left;
+    position: absolute;
+    background: var(--tooltip-bg);
+    border-radius: 5px;
+    left:60px;
+    height: 35px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    opacity: 0;
+    transition: all 0.1s linear;
+}
+
+.tooltip::before {
+    position: absolute;  
+    content: '';
+    border-top:transparent;
+    width: 0; 
+    height: 0; 
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent; 
+    border-right: 7px solid var(--tooltip-bg); 
+    left: -7px;
+}
+
+
+/*Typography */
+
+h1 {
+    text-align: center;
+}
+
+/*Sidebar*/
+
+.sidebar{
+    display: flex;
+    flex-direction: column ;
+    max-width: 80px;
+    height: 100%;
+    background-color: var(--background-accent);
+    border-right: 1px solid var(--border-color);
+    color: var(--text-color);
+    gap:10px;
+}
+
+.sidebar-header {
+    margin: 10px;
+}
+
+.sidebar hr {
+   border-radius: 99vh;
+   height: 2px;
+   width: 50%;
+   background: var(--border-color);
+   margin: 0 auto;
+   outline: none;
+   border: none;
+}
+
+.content-title {
+    display: flex;
+    font-family: 'Poppins','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    justify-content: center;
+    width: 100%;
+    color: var(--text-color);
+    align-items: center;
+    & h2 {
+        color: var(--border-color);
+        font-weight: 500;
+        font-size: 1.25rem; 
+    }
+}
+
+.content-title button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50px;
+    width: 50px;
+    font-size: 2rem;
+    border-radius: 7px;
+    background-color: var(--background-accent);
+    border: none;
+    transition: all 0.1s ease-out;
+    color: var(--border-color);
+    &:hover {
+       background: var(--primary);
+       color: var(--text-color);
+    }
+    & svg path{
+        fill: var(--border-color)
+    }
+    &:hover svg path{
+        fill: var(--background);
+    }
+    & .tooltip {
+        left:75px;
+    }
+}
+
+.sidebar-logo {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    &:hover .tooltip {
+        opacity: 1;
+    }
+}
+
+.sidebar-logo svg{
+    position: relative;
+    display: flex;
+    background: var(--primary);
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    aspect-ratio: 1 / 1;
+    & path {
+        fill: var(--background);
+        color: var(--background);
+    }
+    & circle {
+        fill: var(--background-accent);
+    }
+   
+}
+
+
+button:hover .tooltip {
+    opacity: 1;
+}
