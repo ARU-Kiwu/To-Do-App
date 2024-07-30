@@ -12,6 +12,15 @@ body{
     font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+:root {
+    --background: #fdfdff;
+    --background-accent: #dddce0;
+    --text-color: #000000;
+    --primary:#4f6d99;
+    --border-color:#00000050;
+ }
+
+
 :root[class='dark'] {
    --background: #2b2a2d;
    --background-accent: #39383b;
@@ -20,12 +29,17 @@ body{
    --border-color:#edf0f050;
 }
 
+#content {
+    display: flex;
+    height: 100vh;
+}
+
 /* Tooltip*/
 
 .tooltip {
     --tooltip-bg:var(--primary);
     color: #2b2a2d;
-    display: flex;
+    display: none;
     width: fit-content;
     justify-content: center;
     align-items: center;
@@ -40,7 +54,6 @@ body{
     font-size: 1rem;
     font-weight: 500;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    opacity: 0;
     transition: all 0.1s linear;
 }
 
@@ -122,10 +135,13 @@ h1 {
        color: var(--text-color);
     }
     & svg path{
-        fill: var(--border-color)
+        fill: var(--border-color);
     }
     &:hover svg path{
         fill: var(--background);
+    }
+    &:hover .tooltip {
+        display: flex;
     }
     & .tooltip {
         left:75px;
@@ -141,7 +157,7 @@ h1 {
     height: 50px;
     margin: 0 auto;
     &:hover .tooltip {
-        opacity: 1;
+        display: flex;
     }
 }
 
@@ -166,4 +182,243 @@ h1 {
 
 button:hover .tooltip {
     opacity: 1;
+}
+
+
+/*List pages*/ 
+
+.list-page {
+    width: 100%;
+}
+
+
+
+/* Homepage */
+
+.homepage {
+    flex:1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+.homepage h2 {
+    font-size: 2rem;
+    font-size: 72px;
+    background: -webkit-linear-gradient(left, var(--primary), #bdecdf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.homepage p {
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--border-color);
+    & span {
+        padding: 0 7px;
+        text-align: center;
+    }
+}
+
+/* Dialogs */
+
+.addProject {
+    position: absolute;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    border: none;
+    background: #2b2a2d90;
+    backdrop-filter: blur(5px);
+}
+
+.addProject > div {
+    animation: reveal 200ms ease-in-out;
+    width: 350px;
+    background: var(--background-accent);
+    height: max-content;
+    padding: 15px;
+    border-radius: 5px;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    gap:10px
+}
+
+.modal-title {
+    display: flex;
+    justify-content: space-between;
+    & button svg{
+       height: 24px;
+       width: 24px;
+       & path {
+        fill: var(--text-color);
+       }
+    }
+}
+
+.add-title {
+    position: relative;
+    display: flex;
+    gap:20px;
+    & .title-input {
+     width: 100%;
+    }
+
+    & input {
+        width:100%;
+        height: fit-content;
+        background: none;
+        
+        color: var(--text-color);
+        border: none;
+        outline: none;
+        padding: 5px 45px 5px 5px;
+        font-size: 1.25rem;
+        border-bottom: 2px solid var(--border-color);
+
+        &:focus + span {
+            bottom: 30px;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+        &:not(:placeholder-shown) + span{
+            bottom: 30px;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+    }
+
+    ::placeholder {
+        opacity: 0;
+    }
+
+    .input-placeholder {
+        transition: all 0.2s ease-in-out;
+        pointer-events: none;
+        position: absolute;
+        bottom: 5px;
+        font-size: 1.25rem;
+        color: var(--border-color);
+    }
+
+
+    & .title-input{
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+    }
+
+    & .title-input > div {
+        position: absolute;
+        display: flex;
+        bottom: 5px;
+        right: 0;
+        font-size: small;
+    }
+}
+
+.addProject button {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.icon-selector {
+    position: relative;
+    width: 70px;
+    aspect-ratio: 1 / 1;
+    background-color: var(--background-accent);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    & svg {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    & path {
+     fill: var(--primary);
+    }
+}
+
+.buttons {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+    gap:10px;
+}
+
+.buttons > button {
+    padding: 10px 15px;
+    background: var(--background);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.icons {
+    opacity: 1;
+    position: absolute;
+    display: none;
+    grid-template-columns: repeat(4, 50px);
+    gap:5px;
+    top: 60px;
+    background-color: var(--background-accent);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.icons > .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    border-radius: 5px;
+    height: 50px;
+    border: 1px solid var(--border-color);
+    & svg {
+        height: 35px;
+        width: 35px;
+    }
+    & path {
+        fill : var(--primary);
+    }
+}
+
+/* Animations */
+
+@keyframes reveal {
+    0%{
+       transform: translateY(100px); 
+       opacity: 0;
+    }
+    100%{
+        transform: translateY(0px); 
+        opacity: 1;
+     }
+}
+
+@keyframes exit {
+    0%{
+        transform: translateY(0px); 
+        opacity: 1;
+     }
+     100%{
+         transform: translateY(100px); 
+         opacity: 0;
+      }
 }
