@@ -117,7 +117,19 @@ h1 {
     }
 }
 
-.content-title button {
+.content-lists{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & ul:not(:empty) {
+        display: flex;
+        flex-direction: column;
+        gap:7px;
+        padding: 20px 0;
+    }
+}
+
+.content-title button, .projectIcon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -209,6 +221,7 @@ button:hover .tooltip {
     font-size: 2rem;
     font-size: 72px;
     background: -webkit-linear-gradient(left, var(--primary), #bdecdf);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -398,6 +411,123 @@ button:hover .tooltip {
         fill : var(--primary);
     }
 }
+
+
+
+
+/* To Do Page*/
+
+.project {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+
+}
+
+.project-header {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary);
+    color: var(--background);
+    border-radius: 7px;
+    padding: 30px 50px;
+    /* border-bottom: 2px solid var(--border-color); */
+    & svg {
+        --size: 30px;
+        height: var(--size);
+        width: var(--size);
+    }
+}
+
+.project hr {
+        margin: 5px -20px;
+        border-color: var(--border-color);
+}
+
+.project-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    & button {
+        background-color: var(--background-accent);
+        border: none;
+        padding: 7px 25px;
+        border-radius: 5px;
+        font-weight: 800;
+        color: var(--text-color);
+        transition: color 0.2 ease-in-out;
+    }
+    & button:hover {
+        background-color: var(--primary);
+        color: #000000;
+    }
+}
+
+.project-header > div {
+    display: flex;
+    gap: 10px;
+}
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding: 20px 0;
+}
+
+.to-do-item{
+    width: 100%;
+  
+    input +  p {
+        font-size: 1.25rem;
+    }
+
+    & label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    & label > div {
+        display: flex;
+        gap:10px;
+        & > div {
+            display: flex;
+            gap:5px;    
+        }
+    }
+
+    & svg {
+        --size: 20px;
+        height: var(--size);
+        width: var(--size);
+    }
+
+    & path {
+        fill: var(--primary);
+    }
+    & .priority, .due {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 7px;
+        border: 1px solid var(--border-color);
+        padding: 6px;
+    } 
+
+    & .delete {
+        background: none;
+        border: 1px solid var(--border-color);
+        padding: 6px;
+        border-radius: 7px;
+    }
+}
+
 
 /* Animations */
 

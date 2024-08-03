@@ -1,5 +1,7 @@
 import './styles/styles.css'
 
 import addProject from './components/addProject'
+// import generateDefaultPage from './components/generateDefaultPage'
 addProject()
-window.addEventListener('load',console.log(1))
+
+// window.addEventListener('load', generateDefaultPage)
